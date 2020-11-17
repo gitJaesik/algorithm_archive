@@ -5,3 +5,6 @@
 ### CPP online ide
 
 - http://cpp.sh/
+
+### gcd
+- https://en.m.wikipedia.org/wiki/Euclidean_algorithm
