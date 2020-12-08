@@ -4,46 +4,71 @@
 
 using namespace std;
 
-int getLeader(vector<int> &A, size_t begin, size_t end) {
+int solution(vector<int> &A)
+{
+
+    // int INT_MIN = -1111111111;
+
     unordered_map<int, int> m;
-    for (size_t i = begin; i <= end; ++i) {
-        if (m.find(A[i]) == m.end()) {
+    for (size_t i = 0; i < A.size(); ++i)
+    {
+        if (m.find(A[i]) == m.end())
+        {
             m[A[i]] = 1;
-        } else {
+        }
+        else
+        {
             m[A[i]] += 1;
         }
     }
 
     int leader = INT_MIN;
 
-    unordered_map<int, int>:: iterator itr; 
-    for (itr = m.begin(); itr != m.end(); itr++) 
-    { 
-        if (itr->second > (end - begin + 1) / 2) {
-            return leader = itr->first;
+    unordered_map<int, int>::iterator itr;
+    for (itr = m.begin(); itr != m.end(); itr++)
+    {
+        if (itr->second > A.size() / 2)
+        {
+            leader = itr->first;
         }
-     } 
+    }
 
-    return leader;
-}
-
-int solution(vector<int> &A) {
-
-    int leader = getLeader(A, 0, A.size() -1);
-    if (leader == INT_MIN) return 0;
+    if (leader == INT_MIN)
+        return 0;
 
     int ans = 0;
-    for (size_t i = 0; i < A.size() -1; ++i) {
-        int m1 = getLeader(A, 0, i);
-        int m2 = getLeader(A, i+1, A.size() -1);
-        if (leader == m1 && leader == m2) ans +=1;
+    unordered_map<int, int> m1;
+    for (size_t i = 0; i < A.size() - 1; ++i)
+    {
+
+        // add i's el
+        if (m1.find(A[i]) == m1.end())
+        {
+            m1[A[i]] = 1;
+        }
+        else
+        {
+            m1[A[i]] += 1;
+        }
+
+        // remove i's el
+        m[A[i]] -= 1;
+        if (m[A[i]] == 0)
+        {
+            m.erase(A[i]);
+        }
+
+        if ((m1[leader] > (i + 1) / 2) && (m[leader] > (A.size() - (i + 1)) / 2))
+        {
+            ans += 1;
+        }
     }
 
     return ans;
 }
 
-
-int main() {
+int main()
+{
 
     vector<int> A{4, 3, 4, 4, 4, 2};
 
