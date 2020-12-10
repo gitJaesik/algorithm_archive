@@ -4,24 +4,26 @@
 
 using namespace std;
 
-
-// 0 <= N - 1
 int solution(vector<int> &A) {
-    vector<int> pres(A.size() + 1);
 
-    pres[0] = 0;
-    for (int i = 1; i < pres.size(); i++) {
-        pres[i] = pres[i-1] + A[i-1];
+    vector<int> maxSliceLeft(A.size());
+    vector<int> maxSliceRight(A.size());
+
+    for (int i = 1; i < A.size() - 1; i++) {
+        maxSliceLeft[i] = A[i] + maxSliceLeft[i - 1];
+        maxSliceLeft[i] = max(maxSliceLeft[i], 0);
+    }
+
+    for (int i = A.size() - 2; i >= 1; i--) {
+        maxSliceRight[i] = A[i] + maxSliceRight[i + 1];
+        maxSliceRight[i] = max(maxSliceRight[i], 0);
     }
 
     int ans = 0;
-    for (int i = 1; i < A.size() -1; i++) {
-        for (int j = i + 2; j < A.size() - 1; j++) {
-            int sum = pres[j + 1] - pres[i] - *min_element(A.begin() + i, A.begin() + j);
-            ans = max(ans, sum);
-        }
+    for (int i = 1; i < A.size() - 1; i++)  {
+        int sum = maxSliceLeft[i-1] + maxSliceRight[i+1];
+        ans = max(ans, sum);
     }
-
     return ans;
 }
 
