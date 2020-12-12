@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <set>
 
 using namespace std;
 
@@ -26,24 +27,26 @@ vector<int> getPrime() {
 // factorization
 // 10
 vector<int> getFactorization(int x, const vector<int>& arrayF) {
-    vector<int> fac;
+
+    if (x == 1) {
+        return vector<int>{1};
+    }
+    set<int> setFac;
 
     int xx = x;
     int div = 0;
     int lastPush = 0;
     while (true) {
         div = arrayF[xx];
-        if (lastPush != div) {
-            fac.push_back(div);
-            lastPush = div;
-        }
+        setFac.insert(div);
         if (div == 1) break;
         xx = xx / div;
     }
 
-    if (lastPush != div) fac.push_back(xx);
+    setFac.insert(xx);
+    setFac.insert(x);
 
-    fac.push_back(x);
+    vector<int> fac(setFac.begin(), setFac.end());
 
     return fac;
 }
