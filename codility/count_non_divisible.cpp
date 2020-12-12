@@ -30,15 +30,19 @@ vector<int> getFactorization(int x, const vector<int>& arrayF) {
 
     int xx = x;
     int div = 0;
-    fac.push_back(1);   
+    int lastPush = 0;
     while (true) {
         div = arrayF[xx];
+        if (lastPush != div) {
+            fac.push_back(div);
+            lastPush = div;
+        }
         if (div == 1) break;
-
-        fac.push_back(div);
         xx = xx / div;
     }
-    fac.push_back(xx);
+
+    if (lastPush != div) fac.push_back(xx);
+
     fac.push_back(x);
 
     return fac;
@@ -83,6 +87,15 @@ int main() {
     //             soe[j] = false;
     //         }
     //     }
+    // }
+
+    // vector<int> arrayF = getPrime();
+    // for (int i = 1; i <= 40; i++) {
+    //     vector<int> fac = getFactorization(i, arrayF);
+    //     for (const auto& fa : fac) {
+    //         cout << fa << " ";
+    //     }
+    //     cout << endl;
     // }
 
     vector<int> A{3, 1, 2, 3, 6};
