@@ -24,7 +24,7 @@ dp[]
 
 */
 
-int dp[10001];
+int dp[100001];
 
 int go(int pos, int curSum, vector<int>& A, int N ) {
 
@@ -32,7 +32,7 @@ int go(int pos, int curSum, vector<int>& A, int N ) {
         return A[pos];
     }
 
-    if (dp[pos] != -1) {
+    if (dp[pos] != -2000000000) {
         return dp[pos];
     }
 
@@ -40,7 +40,7 @@ int go(int pos, int curSum, vector<int>& A, int N ) {
 
     // dp[0] = max(go(pos + 1, curSum, N), go(pos + 2, curSum, N), go(pos + 3, curSum, N), go(pos + 4, curSum, N), go(pos + 5, curSum, N), go(pos + 6, curSum, N));
 
-    int maxVal = -1000000000;
+    int maxVal = -10000000001;
     for (int i = 1; i <= 6; ++i) {
         if (pos + i < N) maxVal = max(maxVal, go(pos + i, A[pos + i], A, N));
     }
@@ -50,7 +50,7 @@ int go(int pos, int curSum, vector<int>& A, int N ) {
 
 int solution(vector<int> &A) {
     // initialize
-    for (int i = 0; i < 10000; ++i) { dp[i] = -1; }
+    for (int i = 0; i <= 100000; ++i) { dp[i] = -2000000000; }
 
     go(0, A[0], A, A.size());
 
