@@ -9,10 +9,21 @@ int solution(vector<int> &A) {
     int N = A.size();
 
     int ans = 2000000001;
-    for (int i = 0; i < N; ++i) {
-        for (int j = i; j < N; ++j) {
-            ans = min(ans, abs(A[i] + A[j]));
+
+    sort(A.begin(), A.end());
+
+    int front = 0;
+    int end = N - 1;
+
+    while (true) {
+        ans = min(ans, abs(A[front] + A[end]));
+        if (front == end) break;
+        if (abs(A[front]) > abs(A[end])) {
+            front += 1;
+        } else {
+            end -= 1;
         }
+        if (front >= N || end <= -1) break;
     }
 
     return ans;
@@ -27,3 +38,6 @@ int main() {
 
     return 0;
 }
+
+// https://app.codility.com/demo/results/trainingZ4NRNZ-396/
+// https://app.codility.com/demo/results/trainingHEBSEE-NNF/
