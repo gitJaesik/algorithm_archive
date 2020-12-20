@@ -12,24 +12,43 @@ A[K] ≤ B[K].
 
 // return  2, 1, 0
 // insert sort
-int findNail(int a, int b, vector<int> &C, int j) {
 
+bool isNailed(vector<int> &A, vector<int> &B, vector<int> &C, int mid) {
+
+    vector<bool> nailed(A.size(), false);
+
+    for (int i = 0; i <= mid; ++i) {
+        for (int j = 0; j < A.size(); ++j) {
+            if ( C[i] >= A[j] && C[i] <= B[j]) nailed[j] = true;
+        }
+    }
+
+    for (const auto& el: nailed) {
+        if (el == false) return false;
+    }
+    return true;
 }
 
 int solution(vector<int> &A, vector<int> &B, vector<int> &C) {
-    vector<int> sortedVector;
+    int N = A.size();
+    int M = C.size();
 
-    for (int i = 0; i < C.size(); ++i) {
-        vector<int>::iterator it = upper_bound(sortedVector.begin(), sortedVector.end(), C[i]);
-        sortedVector.insert(it, C[i]);
+    int start = 0;
+    int end = M -1;
+    int ans = -1;
 
-        for (const auto& el: sortedVector) {
-            cout << el << " ";
+    while (start <= end) {
+        int mid = end - start / 2;
+        if (isNailed(A, B, C, mid) == true) {
+            end = mid -1;
+            ans = mid;
+        } else {
+            start = mid + 1;
         }
-        cout << endl;
+
     }
 
-    return 0;
+    return ans + 1;
 }
 
 int main() {
