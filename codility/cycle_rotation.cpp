@@ -5,15 +5,28 @@
 using namespace std;
 
 vector<int> solution(vector<int> &A, int K) {
-    if (K == 0) return A;
-    if (A.size() == 0) return A;
+    // if (K == 0) return A;
+    // if (A.size() == 0) return A;
 
-    int sizeA = A.size();
-    if (K > sizeA) {
-        K = K -sizeA;
+    // int sizeA = A.size();
+    // if (K > sizeA) {
+    //     K = K -sizeA;
+    // }
+
+    // std::rotate(A.rbegin(),A.rbegin()+K,A.rend());
+
+    // return A;
+
+    int N = A.size();
+
+    if (K == 0) return A;
+    if (N == 0) return A;
+
+    if (K > N) {
+        K = K % N;
     }
 
-    std::rotate(A.rbegin(),A.rbegin()+K,A.rend());
+    rotate(A.rbegin(), A.rbegin() + K, A.rend());
 
     return A;
 }
