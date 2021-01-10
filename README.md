@@ -8,3 +8,6 @@
 
 ### gcd
 - https://en.m.wikipedia.org/wiki/Euclidean_algorithm
+
+
+## google 문제 풀어보기
