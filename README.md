@@ -12,4 +12,6 @@
 
 ## google 문제 풀어보기
 
+- google code jam?
+
 ## golang 으로 문제 풀어보기
