@@ -1,7 +1,7 @@
 알고리즘별로 풀은 문제를 커밋하기 위한 git repo
 
 https://app.codility.com/programmers/challenges/
-
+codility programmers 대회 문제 풀기
 
 ## ref
 
