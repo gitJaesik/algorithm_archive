@@ -23,7 +23,7 @@ codility programmers 대회 문제 풀기
 ## java 로 문제 풀어보기
 - 매일 한문제
 
-## javascript 로 문제 풀어보기
+## javascript / typescript 로 문제 풀어보기
 - 매일 한문제
 
 ## python 로 문제 풀어보기
