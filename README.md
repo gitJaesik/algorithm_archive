@@ -9,6 +9,7 @@ acmicpc
 ### CPP online ide
 
 - http://cpp.sh/
+-   use latest cpp
 
 ### gcd
 - https://en.m.wikipedia.org/wiki/Euclidean_algorithm
