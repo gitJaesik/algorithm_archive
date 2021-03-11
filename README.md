@@ -18,6 +18,7 @@ acmicpc
 ## google 문제 풀어보기
 
 - google code jam?
+  - google 위주로
 
 ## golang 으로 문제 풀어보기
 - 매일 한문제
