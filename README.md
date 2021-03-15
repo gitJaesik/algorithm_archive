@@ -6,6 +6,8 @@ acmicpc
 
 ## ref
 
+https://tech.kakao.com/2021/01/25/2021-kakao-recruitment-round-1/
+
 ### CPP online ide
 
 - http://cpp.sh/
