@@ -38,3 +38,6 @@ https://tech.kakao.com/2021/01/25/2021-kakao-recruitment-round-1/
 ## 추가
 
 각 컴파일러 이해하기
+
+
+## 각 회사별 코드 시험 정리하기
