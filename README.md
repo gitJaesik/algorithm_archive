@@ -41,3 +41,7 @@ https://tech.kakao.com/2021/01/25/2021-kakao-recruitment-round-1/
 
 
 ## 각 회사별 코드 시험 정리하기
+
+## 집중력을 위해서 자주 풀기
+ㅇㅟ해서 
+
