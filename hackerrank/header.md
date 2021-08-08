@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-
+```cpp
 // C
 #ifndef _GLIBCXX_NO_ASSERT
 #include <cassert>
@@ -88,5 +88,4 @@
 #include <unordered_map>
 #include <unordered_set>
 #endif
-  
-  
+```
