@@ -9,22 +9,54 @@ func solution(numbers string) int {
 
 	// 7 자리
 	// primes := getPrimes(10000000)
-	// numberList := getNumbers(numbers)
+	fmt.Println(numbers)
+	numberList := getNumbers(0, "", numbers)
+	fmt.Println(numberList)
 	ans := 0
 
 	return ans
 }
 
-func getNumbers(idx int, numbers string, current string) map[int]int {
-	if idx == len(numbers) {
+func getNumbers(selected int, current string, numbers string) map[int]int {
+	fmt.Println("func getNumbers(selected int, current string, numbers string) map[int]int {")
+	fmt.Printf("selected: %v, current: %v, number: %v\n", selected, current, numbers)
 
+	if selected == ((1 << len(numbers)) - 1) {
+		fmt.Println("if selected&((1<<len(numbers))-1) != 0 {")
 		// no error
 		currentInt, _ := strconv.ParseInt(current, 10, 64)
 
 		return map[int]int{int(currentInt): 0}
 	}
 
-	var numberList map[int]int
+	numberList := make(map[int]int)
+	for i := 0; i < len(numbers); i++ {
+		fmt.Println("for i := 0; i < len(numbers); i++ {")
+		fmt.Printf("i: %v, 1 << i: %v\n", i, 1<<i)
+		if !(selected&(1<<i) != 0) {
+			selected = selected | (1 << i)
+			fmt.Println("selected = selected | (1 << i)")
+			fmt.Printf("selected: %v, string(numbers[i]): %v\n", selected, string(numbers[i]))
+
+			m1 := getNumbers(selected, current+string(numbers[i]), numbers)
+			fmt.Println("m1 := getNumbers(selected, current+string(numbers[i]), numbers)")
+			fmt.Printf("m1: %v\n", m1)
+			for key, value := range m1 {
+				numberList[key] = value
+			}
+			m2 := getNumbers(selected, current+"", numbers)
+			fmt.Println("m2 := getNumbers(selected, current+, numbers)")
+			fmt.Printf("m2: %v\n", m1)
+			for key, value := range m2 {
+				numberList[key] = value
+			}
+			selected = selected & (((1 << len(numbers)) - 1) - (1 << i))
+		} else {
+			fmt.Println("else")
+			fmt.Println(selected)
+
+		}
+	}
 
 	return numberList
 }
@@ -55,6 +87,7 @@ func getPrimes(n int) []bool {
 "17"	3
 "011"	2
 */
+
 func main() {
 	n1 := "17"
 	fmt.Println(solution(n1))
