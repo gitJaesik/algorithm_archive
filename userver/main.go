@@ -25,19 +25,47 @@ func (u User) String() string {
 }
 
 func GetUsers(w http.ResponseWriter, r *http.Request) {
-	user := User{
+	// user := User{
+	// 	Name:      "jsphee",
+	// 	Id:        1,
+	// 	CreatedAt: time.Now(),
+	// }
+
+	usersInfo := ""
+
+	for _, user := range gUsers {
+		usersInfo += user.String()
+	}
+
+	w.Write([]byte(usersInfo))
+}
+
+func main() {
+	fmt.Printf("Users: %v\n", gUsers)
+	user1 := User{
 		Name:      "jsphee",
 		Id:        1,
 		CreatedAt: time.Now(),
 	}
-
-	w.Write([]byte(user.String()))
-}
-
-func main() {
+	user2 := User{
+		Name:      "jsphee2",
+		Id:        2,
+		CreatedAt: time.Now(),
+	}
+	gUsers = append(gUsers, user1, user2)
+	fmt.Printf("Users: %v\n", gUsers)
 
 	r := mux.NewRouter()
-	r.HandleFunc("/", GetUsers)
+	// read
+	r.HandleFunc("/user", GetUsers)
+	// create
+	r.HandleFunc("/user/:id", GetUsers)
+	// jwt
+	// put // post // update
+	r.HandleFunc("/user/update/:id", GetUsers)
+	// delete // remove
+	// put // post // update
+	r.HandleFunc("/user/remove/:id", GetUsers)
 
 	log.Fatal(http.ListenAndServe(":8000", r))
 }
