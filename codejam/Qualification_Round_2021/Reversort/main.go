@@ -2,29 +2,6 @@ package main
 
 import "fmt"
 
-// func MinInt(l, r int) int {
-// 	if l < r {
-// 		return l
-// 	}
-// 	return r
-// }
-
-// 1, 2, 3, 4
-// 2
-
-// 0
-// 4, 2, 3, 1
-// 1
-// 4, 3, 2, 1
-
-// 1, 2, 3, 4, 5
-// 2
-
-// 0
-// 5, 2, 3, 4, 1
-// 1
-// 5, 4, 3, 2, 1
-
 func ReverseSliceAll(L []int) {
 	N := len(L)
 	Half := len(L) / 2
@@ -87,3 +64,11 @@ func main() {
 		// fmt.Println(L)
 	}
 }
+
+/*
+1
+18
+10 3 6 8 7 1 5 4 2 9 11 12 14 13 15 16 17 18
+
+39
+*/
